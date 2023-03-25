@@ -2,6 +2,8 @@
 dserve - Deep learning models SERVing with Python. Version 0.0.1
 We run `gunicorn` with `uvicorn` workers and served by `FastAPI` api.
 
+![dserve-logo-256](https://user-images.githubusercontent.com/163333/227744271-cbc690d9-e74e-46c6-aec5-26b62dcd544a.png)
+
 ## How it works
 The gunicorn configuration is automatically loaded from `src/gunicorn_conf.py`, while server startup script is located at `src/gunicorn.sh`. Memory is shared between processes so the models are loaded in ram before the fork of the gunicorn workers.
 
