@@ -1,2 +1,2 @@
 #!/bin/sh
-gunicorn --chdir /app api:app -w 4 -k uvicorn.workers.UvicornWorker -c gunicorn_conf.py
+gunicorn --chdir /app api:app -w 4 --preload -k uvicorn.workers.UvicornWorker -c gunicorn_conf.py

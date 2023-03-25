@@ -13,8 +13,13 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     curl
 
+# wsgi
 COPY src/requirements.txt /
 RUN pip3 install -r requirements.txt
+
+# frameworks
+COPY src/requirements-dl.txt /
+RUN pip3 install -r requirements-dl.txt
 
 COPY ./src /app
 WORKDIR /app
