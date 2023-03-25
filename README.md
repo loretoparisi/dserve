@@ -1,5 +1,5 @@
 # dserve
-Deep learning models SERVing with Python
+dserve - Deep learning models SERVing with Python. Version 0.0.1
 We run `gunicorn` with `uvicorn` workers and served by `FastAPI` api.
 
 ## How it works
@@ -13,6 +13,24 @@ docker build -f Dockerfile -t dserve .
 ## Run
 ```
 docker run -p 8080:8080 -it --rm dserve
+```
+
+You will see
+```
+loading model: FastText took: 0.01 seconds.
+[2023-03-25 21:01:15 +0000] [7] [INFO] Starting gunicorn 20.1.0
+[2023-03-25 21:01:15 +0000] [7] [INFO] Listening at: http://0.0.0.0:8080 (7)
+[2023-03-25 21:01:15 +0000] [7] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2023-03-25 21:01:15 +0000] [7] [INFO] Starting dserve - Deep Learning Model Server 0.0.1
+[2023-03-25 21:01:15 +0000] [7] [INFO] Server is ready. Spawning workers
+[2023-03-25 21:01:15 +0000] [13] [INFO] Booting worker with pid: 13
+[2023-03-25 21:01:15 +0000] [13] [INFO] Worker spawned (pid: 13)
+[2023-03-25 21:01:15 +0000] [14] [INFO] Booting worker with pid: 14
+[2023-03-25 21:01:15 +0000] [14] [INFO] Worker spawned (pid: 14)
+[2023-03-25 21:01:15 +0000] [13] [INFO] Started server process [13]
+[2023-03-25 21:01:15 +0000] [13] [INFO] Waiting for application startup.
+[2023-03-25 21:01:15 +0000] [13] [INFO] Application startup complete.
+...
 ```
 
 ## Debug
@@ -38,18 +56,20 @@ w=10; seq $w | parallel -j$w curl --silent -G -d 'q=hello%20how%20are%20you' htt
 ├── LICENSE
 ├── README.md
 └── src
-    ├── api.py
+    ├── dserve
+    │   ├── __init__.py
+    │   ├── api.py
+    │   ├── models
+    │   │   └── fasttext
+    │   │       └── lid.176.ftz
+    │   ├── models.py
+    │   └── util.py
     ├── gunicorn.sh
     ├── gunicorn_conf.py
-    ├── models
-    │   └── fasttext
-    │       └── lid.176.ftz
-    ├── models.py
     ├── requirements-dl.txt
-    ├── requirements.txt
-    └── util.py
+    └── requirements.txt
 
-3 directories, 11 files
+4 directories, 12 files
 ```
 
 ## Docs

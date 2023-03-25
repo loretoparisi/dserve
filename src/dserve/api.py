@@ -7,16 +7,17 @@
 from typing import Union
 from fastapi import FastAPI
 
-from models import load_fasttext
-from util import tolabels
+from dserve.models import load_fasttext
+from dserve.util import tolabels
 
 fasttext_model = load_fasttext()
 
 app = FastAPI()
 
+
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return { "name": "dserver", "version": __version}
 
 
 @app.get("/predict/{model_id}")

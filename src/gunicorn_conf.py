@@ -1,3 +1,5 @@
+from dserve import __version
+
 #
 # Server socket
 #
@@ -189,6 +191,7 @@ def pre_exec(server):
     server.log.info("Forked child, re-executing.")
 
 def when_ready(server):
+    server.log.info(f"Starting dserve - Deep Learning Model Server {__version}")
     server.log.info("Server is ready. Spawning workers")
 
 def worker_int(worker):
